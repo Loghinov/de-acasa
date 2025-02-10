@@ -1,0 +1,23 @@
+services:
+  de-acasa-app:
+    image:  'de-acasa-spring-boot:latest'
+    build:
+      context: .
+    container_name: de-acasa-app
+    depends_on:
+      - postgres
+    environment:
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/de-acasa-db
+        - SPRING_DATASOURCE_USERNAME=postgres
+        - SPRING_DATASOURCE_PASSWORD=18486529
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  postgres:
+    image: 'postgres:latest'
+    container_name: 'postgres'
+    environment:
+      - 'POSTGRES_DB=de-acasa-db'
+      - 'POSTGRES_PASSWORD=18486529'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - 5432:5432

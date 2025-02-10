@@ -1,0 +1,67 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Sergiu
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  autoIncrement: true
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_attributes
+              - column:
+                  name: user_first_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_last_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_phone_number
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_status
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date_time
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                 name: role_id
+                 type: bigint
+                 constraints:
+                   nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+
+
+
+
