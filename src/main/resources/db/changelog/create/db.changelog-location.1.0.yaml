@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8
+      author: Sergiu
+      changes:
+        - createTable:
+            tableName: locations
+            columns:
+              - column:
+                  name: location_id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: location_city
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: location_region
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: location_address
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true

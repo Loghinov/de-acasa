@@ -2,7 +2,6 @@ databaseChangeLog:
   - changeSet:
       id: 1
       author: Sergiu
-      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
             tableName: users

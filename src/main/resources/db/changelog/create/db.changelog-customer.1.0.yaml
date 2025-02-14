@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 9
+      author: Sergiu
+      changes:
+        - createTable:
+            tableName: customers
+            columns:
+              - column:
+                  name: customer_id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: location_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true

@@ -3,12 +3,15 @@ package org.deacasa.service.Impl;
 import org.deacasa.entity.User;
 import org.deacasa.repository.UserRepo;
 import org.deacasa.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private final Logger logger= LoggerFactory.getLogger(UserServiceImpl.class);
     private final UserRepo userRepo;
     @Autowired
     public UserServiceImpl(UserRepo userRepo) {
@@ -42,7 +45,9 @@ public class UserServiceImpl implements UserService {
         user1.setCreatedDateTime(user.getCreatedDateTime());
         user1.setRoleId(user.getRoleId());
         user1.setOrderId(user.getOrderId());
-        return userRepo.save(user1);
+        user1 = userRepo.save(user1);
+        logger.info("User was updated successfully: {}",user1);
+        return user1;
     }
 
     @Override
@@ -50,4 +55,10 @@ public class UserServiceImpl implements UserService {
         userRepo.deleteById(id);
 
     }
+
+    @Override
+    public void registerUser(User user) {
+
+    }
+    //  TODO implement authorization
 }

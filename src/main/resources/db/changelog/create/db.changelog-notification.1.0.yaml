@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 7
+      author: Sergiu
+      changes:
+        - createTable:
+            tableName: notifications
+            columns:
+              - column:
+                  name: notification_id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: notification_date_time
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: message
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: read_status
+                  type: VARCHAR(50)  # Adjusted as per your enum (you can also use an integer if you store as index)
+                  constraints:
+                    nullable: false

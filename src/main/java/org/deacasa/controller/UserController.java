@@ -1,14 +1,17 @@
 package org.deacasa.controller;
 
-
 import org.deacasa.entity.User;
 import org.deacasa.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    Logger logger = LoggerFactory.getLogger(UserController.class);
+
 
     private final UserService userService;
     public UserController (UserService userService){
@@ -16,14 +19,15 @@ public class UserController {
     }
 
     @GetMapping("/get-all-users")
-
     public List<User>getAllusers(){
+        logger.info("User Controller: get user list");
         return userService.getAllUsers();
     }
 
     @GetMapping("/get-user-by-id")
 
     public User getUserById(@PathVariable Long id){
+        logger.info("User Controller: get user by id: {}",id);
         return userService.getUserById(id);
     }
 
