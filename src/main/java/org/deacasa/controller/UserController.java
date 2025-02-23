@@ -31,12 +31,6 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PostMapping("/save-user")
-
-    public  User saveUser(@RequestBody User user){
-        return userService.saveUser(user);
-    }
-
     @PutMapping("/update-user")
 
     public  User updateUser(@PathVariable Long id, @RequestBody User user){

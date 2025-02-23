@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Builder
 @Table(name = "users")
 public class User  implements Serializable {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private @Id long userId;
     @Column(name = "user_first_name")
@@ -26,18 +26,19 @@ public class User  implements Serializable {
     private String userLastName;
     @Column(name = "user_email")
     private String userEmail;
-    @ToString.Exclude
-    @Column(name = "user_password")
-    private transient String userPassword;
+    @Column(name = "user_password", nullable = false)
+    private  String userPassword;
     @Column(name = "user_phone_number")
     private String userPhoneNumber;
     @Column(name = "user_status")
     private String userStatus;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     @Column(name = "created_date_time")
     private LocalDateTime createdDateTime;
-    @Column(name = "role_id")
-    private long roleId;
+    @OneToOne(fetch = FetchType.EAGER)  // Связь с одной ролью
+    @JoinColumn(name = "role_id")
+    private Role role;
     @Column(name = "order_id")
     private long orderId;
+    @Column(name = "user_name")
+    private String userName;
 }
