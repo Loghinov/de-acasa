@@ -1,5 +1,6 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import org.deacasa.entity.User;
 import org.deacasa.service.UserService;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/auth/")
+@Tag(name="Auth", description = "Регистрация и авторизация пользователя")
 public class AuthController {
 
     @Autowired

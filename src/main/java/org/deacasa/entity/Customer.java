@@ -6,14 +6,8 @@ import lombok.*;
 import java.io.Serializable;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-
-@ToString
-@EqualsAndHashCode
-@Builder
 @Table(name="customers")
 public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)

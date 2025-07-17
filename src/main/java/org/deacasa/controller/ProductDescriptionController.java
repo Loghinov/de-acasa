@@ -1,5 +1,6 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.deacasa.entity.ProductDescription;
 import org.deacasa.service.ProductDescriptionService;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/product-descriptions")
 @RequiredArgsConstructor
+@Tag(name="ProductDescription", description = "Управление Продукт Информацией")
 public class ProductDescriptionController {
 
     private final ProductDescriptionService productDescriptionService;

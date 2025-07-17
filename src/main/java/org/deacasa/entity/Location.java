@@ -6,13 +6,8 @@ import lombok.*;
 import java.io.Serializable;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
-@Builder
 @Table(name = "locations")
 
 public class Location implements Serializable {

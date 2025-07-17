@@ -1,5 +1,6 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.deacasa.entity.Role;
 import org.deacasa.service.RoleService;
@@ -9,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/roles")
 @RequiredArgsConstructor
+@Tag(name="Role", description = "Управление Ролями")
 public class RoleController {
 
     private final RoleService roleService;

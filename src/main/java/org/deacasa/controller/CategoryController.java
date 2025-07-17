@@ -1,6 +1,8 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.deacasa.dto.CategoryDto;
 import org.deacasa.entity.Category;
 import org.deacasa.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/categories")
 @RequiredArgsConstructor
+@Tag(name= "Category Api", description = "Управление категориями товаров")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -28,7 +31,9 @@ public class CategoryController {
 
     // Создание новой категории
     @PostMapping("/save")
-    public Category saveCategory(@RequestBody Category category) {
+    public Category saveCategory(@RequestBody CategoryDto categoryDto) {
+        Category category = new Category();
+        category.setCategoryName(categoryDto.getCategoryName());
         return categoryService.saveCategory(category);
     }
 

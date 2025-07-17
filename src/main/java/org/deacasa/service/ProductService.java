@@ -1,7 +1,10 @@
 package org.deacasa.service;
 
 
+import org.deacasa.dto.ProductDto;
 import org.deacasa.entity.Product;
+import org.springframework.data.domain.PageRequest;
+
 import java.util.List;
 
 
@@ -9,11 +12,11 @@ import java.util.List;
 public interface ProductService {
     List<Product> getAllProducts();
 
+    Product createProduct(ProductDto productDto);
+
     Product getProductById(Long id);
 
-    Product saveProduct(Product product);
-
-    Product updateProduct(Long id, Product product);
+    Product updateProduct(Product product);
 
     void deleteProduct(Long id);
 

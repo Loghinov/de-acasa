@@ -1,5 +1,6 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.deacasa.entity.User;
 import org.deacasa.service.UserService;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@Tag(name="User", description = "Управление Пользователем")
 public class UserController {
     Logger logger = LoggerFactory.getLogger(UserController.class);
 

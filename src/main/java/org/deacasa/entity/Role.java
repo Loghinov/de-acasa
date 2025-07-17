@@ -5,14 +5,9 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@Setter
-@Getter
+@Data
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
-@Builder
 @Table(name = "roles")
 public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +17,5 @@ public class Role implements Serializable {
     private String roleName;
     @Column(name = "role_description")
     private String roleDescription;
-
 
 }

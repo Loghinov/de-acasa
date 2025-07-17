@@ -1,5 +1,6 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.deacasa.entity.UserProduct;
 import org.deacasa.service.UserProductService;
 import org.deacasa.service.UserService;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users-product")
+@Tag(name = "UserProduct", description = "Управление Продуктом Пользователя")
 public class UserProductController {
     private final UserProductService userProductService;
 

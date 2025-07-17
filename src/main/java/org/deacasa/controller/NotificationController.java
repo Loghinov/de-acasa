@@ -1,5 +1,6 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.deacasa.entity.Notification;
 import org.deacasa.service.NotificationService;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/notifications")
 @RequiredArgsConstructor
+@Tag(name="Notification", description = "Управление нотификациями")
 public class NotificationController {
 
     private final NotificationService notificationService;

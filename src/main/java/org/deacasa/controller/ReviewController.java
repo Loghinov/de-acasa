@@ -1,6 +1,7 @@
 package org.deacasa.controller;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.deacasa.entity.Review;
 import org.deacasa.service.ReviewService;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/reviews")
 @RequiredArgsConstructor
+@Tag(name = "Review", description = "Управление Рецензиями")
 public class ReviewController {
 
     private final ReviewService reviewService;

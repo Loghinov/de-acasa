@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Sergiu
+      changes:
+        - addColumn:
+            tableName: products
+            columns:
+              - column:
+                  name: product_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+        - addColumn:
+            tableName: products
+            columns:
+              - column:
+                  name: category_id
+                  type: BIGINT
+                  constraints:
+                    nullable: true
+        - update:
+            tableName: products
+            columns:
+              - column:
+                  name: product_name
+                  value: 'default_name'   # или null или другое значение по умолчанию
+              - column:
+                  name: category_id
+                  valueNumeric: 1         # id существующей категории, например
+        - modifyDataType:
+            tableName: products
+            columnName: product_name
+            newDataType: VARCHAR(255)
+        - modifyDataType:
+            tableName: products
+            columnName: category_id
+            newDataType: BIGINT
+        - addForeignKeyConstraint:
+            baseTableName: products
+            baseColumnNames: category_id
+            referencedTableName: categories
+            referencedColumnNames: category_id
+            constraintName: fk_products_category

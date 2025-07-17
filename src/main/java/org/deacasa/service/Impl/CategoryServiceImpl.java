@@ -33,7 +33,6 @@ public class CategoryServiceImpl implements CategoryService {
     public Category updateCategory(Long id, Category category) {
         Category category1=getCategoryById(id);
         category1.setCategoryName(category.getCategoryName());
-        category1.setProductId(category.getProductId());
         return categoryRepo.save(category1);
     }
 

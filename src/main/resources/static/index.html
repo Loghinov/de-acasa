@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация и Авторизация</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; }
+        .container { max-width: 400px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
+        h2 { text-align: center; }
+        input, button { width: 100%; margin: 8px 0; padding: 8px; }
+        .message { color: green; text-align: center; }
+        .error { color: red; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Регистрация</h2>
+    <form id="registerForm">
+        <input type="text" id="regUserName" placeholder="Имя пользователя" required>
+        <input type="text" id="regFirstName" placeholder="Имя" required>
+        <input type="text" id="regLastName" placeholder="Фамилия" required>
+        <input type="email" id="regEmail" placeholder="Email" required>
+        <input type="password" id="regPassword" placeholder="Пароль" required>
+        <input type="text" id="regPhone" placeholder="Телефон" required>
+        <input type="text" id="regStatus" placeholder="Статус (например, ACTIVE)" required>
+        <input type="number" id="regRoleId" placeholder="ID роли (например, 1)" required>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    <div id="registerMsg"></div>
+
+    <hr>
+
+    <h2>Авторизация</h2>
+    <form id="loginForm">
+        <input type="text" id="loginUserName" placeholder="Имя пользователя" required>
+        <input type="password" id="loginPassword" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+    </form>
+    <div id="loginMsg"></div>
+</div>
+
+<script>
+    // Регистрация
+    document.getElementById('registerForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const data = {
+            userName: document.getElementById('regUserName').value,
+            userFirstName: document.getElementById('regFirstName').value,
+            userLastName: document.getElementById('regLastName').value,
+            userEmail: document.getElementById('regEmail').value,
+            userPassword: document.getElementById('regPassword').value,
+            userPhoneNumber: document.getElementById('regPhone').value,
+            userStatus: document.getElementById('regStatus').value,
+            createdDateTime: new Date().toISOString(),
+            role: { roleId: parseInt(document.getElementById('regRoleId').value) }
+        };
+        const res = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const msg = document.getElementById('registerMsg');
+        if (res.ok) {
+            msg.innerHTML = '<span class="message">Регистрация успешна!</span>';
+        } else {
+            const err = await res.text();
+            msg.innerHTML = '<span class="error">Ошибка: ' + err + '</span>';
+        }
+    };
+
+    // Авторизация
+    document.getElementById('loginForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const data = {
+            userName: document.getElementById('loginUserName').value,
+            userPassword: document.getElementById('loginPassword').value
+        };
+        const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const msg = document.getElementById('loginMsg');
+        if (res.ok) {
+            const token = await res.text();
+            msg.innerHTML = '<span class="message">Успешный вход! Ваш токен: <br>' + token + '</span>';
+        } else {
+            const err = await res.text();
+            msg.innerHTML = '<span class="error">Ошибка: ' + err + '</span>';
+        }
+    };
+</script>
+</body>
+</html> 

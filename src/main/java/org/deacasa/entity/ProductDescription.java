@@ -8,13 +8,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
-@Builder
+@Data
 @Table(name="products_Descroptions")
 public class ProductDescription implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)

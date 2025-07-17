@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-categories-seq
+      author: sergiu
+      changes:
+        - createSequence:
+            sequenceName: categories_seq
+            startValue: 1

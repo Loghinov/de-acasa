@@ -1,5 +1,6 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.deacasa.entity.Location;
 import org.deacasa.service.LocationService;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/locations")
 @RequiredArgsConstructor
+@Tag(name="Location", description = "Управление локацией")
 public class LocationController {
 
     private final LocationService locationService;

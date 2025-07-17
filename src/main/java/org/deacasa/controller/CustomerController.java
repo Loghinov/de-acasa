@@ -1,5 +1,6 @@
 package org.deacasa.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.deacasa.entity.Customer;
 import org.deacasa.service.CustomerService;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/customers")
 @RequiredArgsConstructor
+@Tag(name="Customer", description = "Управление клиентом")
 public class CustomerController {
 
     private final CustomerService customerService;

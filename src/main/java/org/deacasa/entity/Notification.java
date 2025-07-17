@@ -9,13 +9,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
-@Builder
 @Table(name="notifications")
 public class Notification implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -5,20 +5,17 @@ import lombok.*;
 
 import java.io.Serializable;
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="categories")
 public class Category implements Serializable {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categories_seq")
+    @SequenceGenerator(name = "categories_seq", sequenceName = "categories_seq", allocationSize = 1)
     @Column(name="category_id")
-    private @Id long categoryId;
+    private Long categoryId;
     @Column(name="category_name")
     private String categoryName;
-    @Column(name="product_id")
-    private long productId;
 }
