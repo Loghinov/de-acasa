@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-dttmstart-dttmend-to-orders
+      author: Sergiu
+      changes:
+        - dropColumn:
+            columnName: order_date
+            tableName: orders
+        - addColumn:
+            tableName: orders
+            columns:
+              - column:
+                  name: dttmstart
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: dttmend
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: true

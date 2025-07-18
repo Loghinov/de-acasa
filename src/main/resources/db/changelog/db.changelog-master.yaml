@@ -9,3 +9,7 @@ databaseChangeLog:
       file: db/changelog/update.category/db.changelog.create-categories-seq.1.1.yaml
   - include:
       file: db\changelog\update\product\db.changelog-product.1.1.yaml
+  - include:
+      file: db/changelog/update.order/db.changelog.update-order.1.0.yaml
+  - include:
+      file: db/changelog/update.order/db.changelog.update-order.1.2.yaml

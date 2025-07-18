@@ -1,6 +1,8 @@
 package org.deacasa.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.deacasa.entity.Order;
 import org.deacasa.entity.User;
 import org.deacasa.service.UserService;
 import org.slf4j.Logger;
@@ -10,15 +12,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 @Tag(name="User", description = "Управление Пользователем")
 public class UserController {
     Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
     private final UserService userService;
-    public UserController (UserService userService){
-        this.userService = userService;
-    }
 
     @GetMapping("/get-all-users")
     public List<User>getAllusers(){
